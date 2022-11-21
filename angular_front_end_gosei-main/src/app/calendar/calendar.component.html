@@ -1,0 +1,141 @@
+<navbar></navbar>
+<div class="option d-flex">
+  <div class="option-button d-flex">
+    <div class="flex items-center space-x-8 rounded-2xl border px-4 py-1" id="roster" (click)="RosterButton()"
+      [ngStyle]="{'background-color': checkRoster ? '#1ABAC5':'white'}">
+      <a type="button" class="option" [ngStyle]="{'color': checkRoster  ? 'white':'black' }">Roster</a>
+    </div>
+    <div class="flex items-center space-x-8 rounded-2xl border px-4 py-1" id="availability" (click)="AvaiButton()"
+      [ngStyle]="{'background-color': checkAvai ? '#1ABAC5':'white'}">
+      <a type="button" class="option" [ngStyle]="{'color': checkAvai  ? 'white':'black' }">Availability</a>
+    </div>
+    <div class="flex items-center space-x-8 rounded-2xl border px-4 py-1" id="leave" (click)="LeaveButton()"
+      [ngStyle]="{'background-color': checkLeave ? '#1ABAC5':'white' }">
+      <a type="button" class="option" [ngStyle]="{'color': checkLeave  ? 'white':'black' }">Leave</a>
+    </div>
+  </div>
+  <div *ngIf="this.changeCalendar != 3">
+    <div class="option-option-button">
+      <div class="flex items-center space-x-8 rounded-2xl border px-4 py-1" id="week">
+        <a type="button" class="direction" (click)="LeftRightButton(-1)">
+          <i class="bi bi-chevron-left"></i>
+        </a>
+        <a class="option"> {{this.status}} </a>
+        <a type="button" class="direction" (click)="LeftRightButton(1)">
+          <i class="bi bi-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="this.changeCalendar == 3">
+    <div class="option-option-button">
+      <div class="flex items-center space-x-8 rounded-2xl border px-4 py-1" id="week"
+        [ngStyle]="{'background-color': '#1ABAC5','outline': '2px solid transparent','outline-offset': '2px'}">
+        <a class="option" type="button" [ngStyle]="{'color': 'white'}" (click)=" Popup()"> Request Leave </a>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+<div class="mt-4" *ngIf="this.changeCalendar != 3">
+  <ul class="d-flex border boder-black rounded-3 p-0">
+    <li *ngFor="let day of days" class="flex-fill border-0 border-start">
+      <div class="head-day ps-3 py-2 ">{{this.day}}</div>
+      <div *ngIf="this.changeCalendar == 1">
+        <div class="m-2 d-flex align-items-start border boder-black rounded-3 content-day">
+          <div class="rounded-start me-2 pe-2 align-super"></div>
+          <div class="">
+            <span class="my-2">8h</span>
+            <div class="my-2">
+              <span class="rounded bg-white px-1 me-1">08:00</span>
+              <span class="rounded bg-white px-1 mx-1">16:00</span>
+            </div>
+            <div class="flex items-center space-x-1"><span><i class="bi bi-briefcase-fill me-2"></i>Contracted</span>
+            </div>
+          </div>
+        </div>
+        <div class="m-2 d-flex align-items-start border boder-black rounded-3 content-day">
+          <div class="rounded-start me-2 pe-2 align-super"></div>
+          <div class="">
+            <span class="my-2">8h</span>
+            <div class="my-2">
+              <span class="rounded bg-white px-1 me-1">08:00</span>
+              <span class="rounded bg-white px-1 mx-1">16:00</span>
+            </div>
+            <div class="flex items-center space-x-1"><span><i class="bi bi-briefcase-fill me-2"></i>Contracted</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="this.changeCalendar == 2">
+        <div class="avai-calendar">
+          <a>08:00 – 18:00</a>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+</div>
+<div *ngIf="this.changeCalendar == 3">
+  <div class="leave-calendar" style="margin-left: 50px;margin-right: 50px;">
+    <ag-grid-angular style="width: 80%; height: 500px;margin: auto;margin-top: 30px;" class="ag-theme-alpine"
+      [columnDefs]="columnDefs" [rowData]="rowData" rowSelection="multiple"></ag-grid-angular>
+  </div>
+</div>
+
+<div [ngClass]="{'popup':isPopup,'popup-close':!isPopup}">
+  <div class="content border-black rounded-3 ">
+    <div class="fw-bold fs-6 py-4 text d-flex justify-content-between px-4">
+      <div class="text-white">LEAVE REQUEST</div>
+      <i (click)="Popup()" class="bi bi-x text-white fs-5"></i>
+    </div>
+    <form class="row px-4">
+      <div class="mb-3 mt-3">
+        <label>LEAVE TYPE</label>
+        <select ngModel name="contactMethod" class="form-select">
+          <option value="">Select type</option>
+          <option *ngFor="let type of types">
+            {{ type }}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3 col-6">
+        <label for="date-from" class="font-bold">DATE FROM</label>
+        <input type="text" name="date-from" ngModel #firstName="ngModel" value="" class="form-control" />
+        <!-- <mat-card class="demo-inline-calendar-card">
+          <mat-calendar></mat-calendar>
+        </mat-card> -->
+      </div>
+      <div class="mb-3 col-6">
+        <label for="date-to">DATE TO</label>
+        <input type="text" name="date-to" ngModel #lastName="ngModel" class="form-control" />
+      </div>
+      <div class="mb-3 ">
+        <input type="checkbox" (click)="addAll()" ngModel name="all" class="form-check-input me-2" id="all" />
+        <label class="form-check-label" for="all">All Day</label>
+      </div>
+      <div *ngIf="!isAll" class="mb-3 col-6">
+        <label for="star" class="font-bold">START TIME</label>
+        <input type="text" name="start" ngModel #star="ngModel" class="form-control" />
+      </div>
+      <div *ngIf="!isAll" class="mb-3 col-6">
+        <label for="end">END TIME</label>
+        <input type="text" name="end" ngModel #end="ngModel" class="form-control" />
+      </div>
+      <div class="mb-3 d-flex flex-column">
+        <label for="comment">COMMENT</label>
+        <textarea class="rounded-3" name="comment">
+        </textarea>
+      </div>
+      <div class="mb-3 ">
+        <button class="btn-save border-0 py-2 px-4 rounded-4">Save</button>
+        <button (click)="Popup()"
+          class="bg-white border border-1 border-black btn-cancel py-2 px-4 ms-3 rounded-4">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,195 @@
+.row.bg-black {
+    height: 65px;
+}
+.basic-skill a.bg-black {
+    height: 45px;
+    margin-right: 20px;
+    margin-top: 6px;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.bill a.bg-black {
+    height: 65px;  
+    padding-top: 3%;
+    color: white;
+}
+p {
+    margin-left: 10px;
+    color: black;
+    font-size: 18px;
+    padding-top: 17px;
+}
+
+p.title-name {
+    color: white;
+    padding: 8px;
+}
+
+p.p-day {
+    margin: 0px;
+}
+
+button.col-1.rounded-circle.text-white {
+    width: 3rem;
+    height: 3rem;
+    margin-top: 1%;
+    margin-left: 20px;
+    margin-right: 40px;
+    background-color: purple;
+}
+
+div.col-1.rounded-circle.text-white {
+    text-align: center;
+    padding-top: 50px;
+    padding-right: 0px;
+    width: 9rem;
+    height: 9rem;
+    margin-top: 1%;
+    margin-left: 20px;
+    margin-right: 40px;
+    background-color: purple;
+}
+p[_ngcontent-uj7-c17] {
+    color: white;
+    padding-top: 1%;
+    
+    text-align: center;
+}
+.form-info  {
+    flex: 0 0 auto;
+    width: 100%;
+    border: 1px solid rgb(186, 176, 176);
+    border-radius: 15px;
+    margin-top: 40px;
+    padding: 10px;
+    font-size: 13px;
+}
+.register-settings {
+    width: 100%;
+    border: 1px solid rgb(186, 176, 176);
+    border-radius: 15px;
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 13px;
+}
+
+.mb-4.form-check {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 50%;
+}
+.mb-4.form-check-address {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+label {
+    font-weight: 500;
+}
+p.name {
+    padding-top: 90px;
+    margin: 0 auto;
+}
+.a-day {
+    text-decoration: none;
+    padding: 5px;
+    border: 1px solid;
+    color: black;
+}
+
+.a-day:active {
+    text-decoration: none;
+    padding: 5px;
+    border: 1px solid;
+    color: white;
+    background-color: rgba(68, 168, 168, 0.971);
+}
+
+.lettered-avatar {
+    font-size: 30px;
+    padding-top: 13px;
+}
+.col-3.d-flex.lettered-avatar-wrapper.dark.justify-content-end {
+    margin-top: 40px;
+    margin-left: 10%;
+}
+.col-5 {
+    flex: 0 0 auto;
+}
+.a-day:active{
+    background-color: cadetblue;
+}
+label.btn.btn-outline-primary {
+    height: 36px;
+}
+.curso-pointer{
+    cursor:pointer;
+    text-decoration: none;
+  }
+  .btn-day{
+    width: 58%;
+  }
+  .active{
+    color: white;
+    background-color: #1ABAC5;
+  }
+  ul.d-flex.btn-day.flex-wrap.border.rounded-3.p-0.ms-0.mt-3 {
+    width: 330px;
+}
+
+a.bg-black.active {
+    color: red;
+  }
+  a.bg-black {
+    color: white;
+  }
+  button.btn.btn-lg.btn-primary.btn-block {
+    background-color: #1ABAC5;
+    border-radius: 30px;
+    font-size: 15px;
+    padding: 12px 25px 10px 25px;
+    margin-top: 30px;
+    border: none;
+    margin-bottom: 50px;
+}
+img.logo {
+    height: 45px;
+    padding-top: 15px;
+    padding-left: 60px;
+}
+.form-control {
+    color: gray;
+}
+.hehe {
+    position: absolute;
+    right: 10px;
+    border: 1px solid #80808047;
+    height: 40px;
+    width: 180px;
+    padding-top: 10px;
+    padding-left: 16px;
+    border-radius: 10px;
+    animation: 0.35s cubic-bezier(0.21, 1.02, 0.73, 1) 0s 1 normal forwards running ;
+}
+i.bi.bi-check {
+    background-color: #00800078;
+    border-radius: 30px;
+    color: white;
+    font-size: 16px;
+    padding-right: 3px;
+    padding-left: 3px;
+    padding-top: 2px;
+    margin-right: 5px;
+    
+}
+@keyframes mymove1 {
+    0%{
+        bot: -100px;
+    }
+
+    100% {
+        right: 500px;
+    }
+}

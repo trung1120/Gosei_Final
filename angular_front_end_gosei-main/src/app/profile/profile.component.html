@@ -1,0 +1,118 @@
+<navbar></navbar>
+<div class="row">
+    <div class="col-3 d-flex lettered-avatar-wrapper dark justify-content-end">
+        <div class="col-1  rounded-circle text-white">
+            <div class="lettered-avatar">DL</div>
+            <p class="name"><strong>Denny Lee</strong>
+                <br>
+                DC-Sydney
+            </p>
+        </div>
+    </div>
+
+    <div class="col-5">
+        <form #f="ngForm"  (ngSubmit)="signIn(f.value)">
+
+
+            <div class="form-info">
+                <p style="color:black;font-weight:bold ;">Profile</p>
+                <div class="box name d-flex">
+                    <div class="mb-4 form-check">
+                        <label for="name">FIRST NAME</label>
+                        <input for="name" required type="text" name="firstname" value="Danny" class="form-control"
+                            id="firstname" />
+                        <!-- #name="ngModel" ngModel -->
+                    </div>
+                    <div class="mb-4 form-check">
+                        <label for="name">LAST NAME</label>
+                        <input required type="text" name="lastname" value="Lee" class="form-control" id="lastname" />
+
+                    </div>
+                </div>
+                <div class="box info d-flex">
+                    <div class="mb-4 form-check">
+                        <label for="name">ID</label>
+                        <input required type="text" name="id" value="ID000001" class="form-control" id="id" />
+                    </div>
+                    <div class="mb-4 form-check">
+                        <label for="name">POSITION</label>
+                        <input required type="text" name="position" value="Team Member" class="form-control"
+                            id="position" />
+                    </div>
+                </div>
+                <div class="address">
+                    <div class="mb-4 form-check-address">
+                        <label for="name">EMAIL</label>
+                        <input required type="text" name="email" value="danny.lee@email.com" class="form-control"
+                            id="email" />
+                    </div>
+
+                    <div class="mb-4 form-check-address">
+                        <label for="name">PHONE</label>
+                        <input required type="text" name="email" value="+61 412 345 678" class="form-control"
+                            id="email" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="register-settings">
+                <h3 class="mb-4 fs-4 fw-bold">Additional shifts register settings</h3>
+                <div class="mb-2">
+                    <div class="form-check mb-2">
+                        <input ngModel name="shiftList" class="form-check-input" type="checkbox" />
+                        <label class="form-check-label">
+                            Available for Early Start (Prior to contracted start time)
+                        </label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input ngModel name="shiftList" class="form-check-input" type="checkbox" />
+                        <label class="form-check-label">
+                            Available for Late Finishes (After contracted finish time)
+                        </label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input ngModel type="checkbox" name="shiftList" (ngModelChange)="addShift()"
+                            #shiftList="ngModel" class="form-check-input" />
+                        <label class="form-check-label">
+                            Available for Additional Shift (Days and Times)
+                        </label>
+
+                        <div *ngIf="isAddShift">
+                            <div class="mt-2">Select your preferred days</div>
+                            <ul class="d-flex btn-day flex-wrap border rounded-3 p-0 ms-0  mt-3 ">
+                                <li (click)="isAllActive()" [ngClass]="{'active':activeAll}"
+                                    class=" curso-pointer px-2 py-2">
+                                    <a>All day</a>
+                                </li>
+                                <ng-container *ngFor="let day of days">
+                                    <li (click)="isActive(day)" class="curso-pointer border-start px-2 py-2"
+                                        [ngClass]="{'active':day[1]}">
+                                        <a>{{day[0]}}</a>
+                                    </li>
+                                </ng-container>
+                            </ul>
+                            <label class="mt-1">Select your available time range</label>
+                            <div class="mt-3">
+                                <input type="time" class="btn_time rounded-3 border border-1 px-3 py-2">
+                                <span class="mx-3">to</span>
+                                <input type="time" class="btn_time rounded-3 border border-1 px-3 py-2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="ShowSuccess()">
+                Save Change
+            </button>
+        </form>
+
+    </div>
+
+
+    <!-- <button class="btn btn-primary" [disabled]="!f.valid">Create</button> -->
+</div>
+<div class="save-success">
+    <div class="hehe">
+        <div role="status" aria-live="polite" class="go3958317564"><i class="bi bi-check"></i>Saved Successfully</div>
+    </div> 
+</div>
