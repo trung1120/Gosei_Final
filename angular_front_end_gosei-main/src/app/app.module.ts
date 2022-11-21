@@ -19,41 +19,44 @@ import { ClickOutsideModule } from 'ng-click-outside';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
 import { MaterialExampleModule } from './material.module';
+import { ComponentLeaveComponent } from "./component-leave/component-leave.component";
 
 @NgModule({
-  declarations: [ 
-    AppComponent,
-    ProfileComponent,
-    CalendarComponent,
-    ShiftComponent,
-    LoginComponent,
-    NavbarComponent,
-  ],
-  imports: [
-    MaterialExampleModule,
-    ToastNoAnimationModule.forRoot(),
-    ClickOutsideModule,
-    MatButtonToggleModule,
-    MatNativeDateModule,
-    BrowserAnimationsModule,
-    BrowserModule,
-    MatSliderModule,
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    MatTableModule,
-    FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: ProfileComponent },
-      { path: 'calendar', component: CalendarComponent },
-      { path: 'shift', component: ShiftComponent },
-      { path: 'login', component: LoginComponent },
-    ]),
-    BrowserAnimationsModule,
-    HttpClientModule,
-    AgGridModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        ProfileComponent,
+        CalendarComponent,
+        ShiftComponent,
+        LoginComponent,
+        NavbarComponent,
+        ComponentLeaveComponent,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        MaterialExampleModule,
+        ToastNoAnimationModule.forRoot(),
+        ClickOutsideModule,
+        MatButtonToggleModule,
+        MatNativeDateModule,
+        BrowserAnimationsModule,
+        BrowserModule,
+        MatSliderModule,
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        MatTableModule,
+        FormsModule,
+        RouterModule.forRoot([
+            { path: '', component: ProfileComponent },
+            { path: 'calendar', component: CalendarComponent },
+            { path: 'shift', component: ShiftComponent },
+            { path: 'login', component: LoginComponent },
+        ]),
+        BrowserAnimationsModule,
+        HttpClientModule,
+        AgGridModule,
+        
+    ]
 })
 export class AppModule { }
