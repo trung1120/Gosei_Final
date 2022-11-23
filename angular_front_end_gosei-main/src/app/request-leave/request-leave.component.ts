@@ -7,8 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestLeaveComponent implements OnInit {
 
+  checkRoster = true;
+  checkAvai = false;
+  checkLeave = false;
+  changeCalendar = 1;
   constructor() { }
 
+  LeaveButton() {
+    this.changeCalendar = 3;
+    this.checkLeave = true;
+    this.checkRoster = false;
+    this.checkAvai = false;
+  }
   ngOnInit(): void {
   }
 

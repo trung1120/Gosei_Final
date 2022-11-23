@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Abp.Authorization.Users;
 using Abp.Extensions;
+using FinalProject.Leaves;
 
 namespace FinalProject.Authorization.Users
 {
@@ -30,5 +31,7 @@ namespace FinalProject.Authorization.Users
 
             return user;
         }
+
+        public ICollection<Leave> Leaves { get; set; }
     }
 }
