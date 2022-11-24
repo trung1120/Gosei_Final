@@ -10,6 +10,5 @@ namespace FinalProject.Leaves
 {
     public interface  LeaveAppService : IApplicationService  
     {
-        Leave<ListResultDto> ;
     }
 }

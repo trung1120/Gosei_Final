@@ -15,9 +15,8 @@ namespace FinalProject.Leaves
         public DateTime ToDate{get ;set;}
         public string Status { get; set; }
 
-        public User User  { get; set; }
+        public User User  { get; set; } 
 
-        public
         public Leave(int userId,string leaveType,string status)
         {
             UserId = userId;
