@@ -38,6 +38,20 @@ import { SidebarComponent } from './layout/sidebar.component';
 import { SidebarLogoComponent } from './layout/sidebar-logo.component';
 import { SidebarUserPanelComponent } from './layout/sidebar-user-panel.component';
 import { SidebarMenuComponent } from './layout/sidebar-menu.component';
+// new
+import { ProfileComponent} from './profile/profile.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { ShiftComponent } from './shift/shift.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ButtonComponent } from './button/button.component';
+import { TableComponent } from './table/table.component';
+import { WeekComponent } from './week/week.component';
+import { RouterModule } from '@angular/router';
+import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
+import { ClickOutsideModule } from 'ng-click-outside';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -67,7 +81,15 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
     SidebarComponent,
     SidebarLogoComponent,
     SidebarUserPanelComponent,
-    SidebarMenuComponent
+    SidebarMenuComponent,
+    // new
+    ProfileComponent,
+    CalendarComponent,
+    ShiftComponent,
+    NavbarComponent,
+    ButtonComponent,
+    TableComponent,
+    WeekComponent
   ],
   imports: [
     CommonModule,
@@ -82,9 +104,10 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
     AppRoutingModule,
     ServiceProxyModule,
     SharedModule,
-    NgxPaginationModule,
+    NgxPaginationModule
   ],
   providers: [],
+  bootstrap: [AppComponent],
   entryComponents: [
     // tenants
     CreateTenantDialogComponent,

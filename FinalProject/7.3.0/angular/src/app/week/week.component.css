@@ -1,0 +1,9 @@
+a.direction {
+    padding-top: 5px;
+    color: black;
+}
+a.option {
+    text-decoration: none;
+    color: black;
+    padding: 5px 15px 5px 15px;
+}
