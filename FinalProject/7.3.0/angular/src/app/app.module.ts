@@ -46,7 +46,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ButtonComponent } from './button/button.component';
 import { TableComponent } from './table/table.component';
 import { WeekComponent } from './week/week.component';
-
+import { RouterModule } from '@angular/router';
+import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
+import { ClickOutsideModule } from 'ng-click-outside';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -99,10 +104,10 @@ import { WeekComponent } from './week/week.component';
     AppRoutingModule,
     ServiceProxyModule,
     SharedModule,
-    NgxPaginationModule,
-
+    NgxPaginationModule
   ],
   providers: [],
+  bootstrap: [AppComponent],
   entryComponents: [
     // tenants
     CreateTenantDialogComponent,
