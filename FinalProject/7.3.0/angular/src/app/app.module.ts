@@ -38,6 +38,15 @@ import { SidebarComponent } from './layout/sidebar.component';
 import { SidebarLogoComponent } from './layout/sidebar-logo.component';
 import { SidebarUserPanelComponent } from './layout/sidebar-user-panel.component';
 import { SidebarMenuComponent } from './layout/sidebar-menu.component';
+// new
+import { ProfileComponent} from './profile/profile.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { ShiftComponent } from './shift/shift.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ButtonComponent } from './button/button.component';
+import { TableComponent } from './table/table.component';
+import { WeekComponent } from './week/week.component';
+
 
 @NgModule({
   declarations: [
@@ -67,7 +76,15 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
     SidebarComponent,
     SidebarLogoComponent,
     SidebarUserPanelComponent,
-    SidebarMenuComponent
+    SidebarMenuComponent,
+    // new
+    ProfileComponent,
+    CalendarComponent,
+    ShiftComponent,
+    NavbarComponent,
+    ButtonComponent,
+    TableComponent,
+    WeekComponent
   ],
   imports: [
     CommonModule,
@@ -83,6 +100,7 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
     ServiceProxyModule,
     SharedModule,
     NgxPaginationModule,
+
   ],
   providers: [],
   entryComponents: [
