@@ -1567,7 +1567,7 @@ namespace FinalProject.Migrations
                     b.ToTable("AbpUsers");
                 });
 
-            modelBuilder.Entity("FinalProject.Leaves.Leave", b =>
+            modelBuilder.Entity("FinalProject.Availabilitys.Availability", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1575,16 +1575,13 @@ namespace FinalProject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("FromDate")
+                    b.Property<string>("Date")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FromTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("LeaveType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ToDate")
+                    b.Property<DateTime>("ToTime")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("UserId")
@@ -1597,7 +1594,7 @@ namespace FinalProject.Migrations
 
                     b.HasIndex("UserId1");
 
-                    b.ToTable("Leave");
+                    b.ToTable("Availabilities");
                 });
 
             modelBuilder.Entity("FinalProject.MultiTenancy.Tenant", b =>
@@ -1882,13 +1879,11 @@ namespace FinalProject.Migrations
                     b.Navigation("LastModifierUser");
                 });
 
-            modelBuilder.Entity("FinalProject.Leaves.Leave", b =>
+            modelBuilder.Entity("FinalProject.Availabilitys.Availability", b =>
                 {
-                    b.HasOne("FinalProject.Authorization.Users.User", "User")
-                        .WithMany("Leaves")
+                    b.HasOne("FinalProject.Authorization.Users.User", null)
+                        .WithMany("Availabilities")
                         .HasForeignKey("UserId1");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("FinalProject.MultiTenancy.Tenant", b =>
@@ -1976,9 +1971,9 @@ namespace FinalProject.Migrations
 
             modelBuilder.Entity("FinalProject.Authorization.Users.User", b =>
                 {
-                    b.Navigation("Claims");
+                    b.Navigation("Availabilities");
 
-                    b.Navigation("Leaves");
+                    b.Navigation("Claims");
 
                     b.Navigation("Logins");
 

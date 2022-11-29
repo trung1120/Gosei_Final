@@ -141,6 +141,69 @@ export class AccountServiceProxy {
 }
 
 @Injectable()
+export class AvailabilityServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * @return Success
+     */
+    getAll(): Observable<AvailabilityListDtoListResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/Availability/GetAll";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAll(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAll(<any>response_);
+                } catch (e) {
+                    return <Observable<AvailabilityListDtoListResultDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<AvailabilityListDtoListResultDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAll(response: HttpResponseBase): Observable<AvailabilityListDtoListResultDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = AvailabilityListDtoListResultDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<AvailabilityListDtoListResultDto>(<any>null);
+    }
+}
+
+@Injectable()
 export class ConfigurationServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -2002,6 +2065,108 @@ export interface IAuthenticateResultModel {
     encryptedAccessToken: string | undefined;
     expireInSeconds: number;
     userId: number;
+}
+
+export class AvailabilityListDto implements IAvailabilityListDto {
+    id: number;
+    userId: number;
+    date: string | undefined;
+
+    constructor(data?: IAvailabilityListDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.userId = _data["userId"];
+            this.date = _data["date"];
+        }
+    }
+
+    static fromJS(data: any): AvailabilityListDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new AvailabilityListDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["userId"] = this.userId;
+        data["date"] = this.date;
+        return data; 
+    }
+
+    clone(): AvailabilityListDto {
+        const json = this.toJSON();
+        let result = new AvailabilityListDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IAvailabilityListDto {
+    id: number;
+    userId: number;
+    date: string | undefined;
+}
+
+export class AvailabilityListDtoListResultDto implements IAvailabilityListDtoListResultDto {
+    items: AvailabilityListDto[] | undefined;
+
+    constructor(data?: IAvailabilityListDtoListResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(AvailabilityListDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): AvailabilityListDtoListResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new AvailabilityListDtoListResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+
+    clone(): AvailabilityListDtoListResultDto {
+        const json = this.toJSON();
+        let result = new AvailabilityListDtoListResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IAvailabilityListDtoListResultDto {
+    items: AvailabilityListDto[] | undefined;
 }
 
 export class ChangePasswordDto implements IChangePasswordDto {
