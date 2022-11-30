@@ -7,7 +7,7 @@ using Abp.EntityFrameworkCore.Uow;
 using Abp.MultiTenancy;
 using FinalProject.EntityFrameworkCore.Seed.Host;
 using FinalProject.EntityFrameworkCore.Seed.Tenants;
-using FinalProject.EntityFrameworkCore.Seed.AvailabilityFoder;
+using FinalProject.EntityFrameworkCore.Seed.ShiftOffers;
 
 namespace FinalProject.EntityFrameworkCore.Seed
 {
@@ -28,7 +28,7 @@ namespace FinalProject.EntityFrameworkCore.Seed
             // Default tenant seed (in host database).
             new DefaultTenantBuilder(context).Create();
             new TenantRoleAndUserBuilder(context, 1).Create();
-            new DefaultAvailabilityBuilder(context, 1).Create();
+            new DefaultShiftOffersBuilder(context).Create();
         }
 
         private static void WithDbContext<TDbContext>(IIocResolver iocResolver, Action<TDbContext> contextAction)
