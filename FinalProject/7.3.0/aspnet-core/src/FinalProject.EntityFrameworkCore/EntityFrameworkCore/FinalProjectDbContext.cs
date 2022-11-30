@@ -4,6 +4,7 @@ using FinalProject.Authorization.Roles;
 using FinalProject.Authorization.Users;
 using FinalProject.MultiTenancy;
 using FinalProject.ShiftOffers;
+using FinalProject.Availabilitys;
 
 namespace FinalProject.EntityFrameworkCore
 {
@@ -11,6 +12,7 @@ namespace FinalProject.EntityFrameworkCore
     {
         /* Define a DbSet for each entity of the application */
         public virtual DbSet<ShiftOffer> ShiftOffers { get; set; }
+        public virtual DbSet<Availability> Availabilities { get; set; }
         public FinalProjectDbContext(DbContextOptions<FinalProjectDbContext> options)
             : base(options)
         {
