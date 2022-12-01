@@ -1,5 +1,14 @@
+li.flex-fill {
+    border: groove;
+}
+.head-day.ps-3.py-2 {
+    text-align: center;
+}
+.body-cell {
+    padding-left: 9px;
+}
 .mt-4 {
-    margin-left: 200px;
+    margin-left: 160px;
     margin-right: 200px;
 }
 
@@ -20,7 +29,6 @@
 }
 
 a.direction {
-    padding-top: 5px;
     color: black;
 }
 
@@ -52,9 +60,8 @@ div#week {
 }
 
 .option.d-flex {
+    margin-right: 10%;
     position: relative;
-    margin-left: 200px;
-    margin-right: 200px;
     justify-content: space-between;
     padding-top: 3%;
 }
