@@ -53,7 +53,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { AgGridModule } from 'ag-grid-angular';
 import { ShiftOfferServiceProxy } from '@shared/service-proxies/service-proxies';
-
+import { AvailabilityServiceProxy } from '@shared/service-proxies/service-proxies';
+import { LeavesComponent } from './leaves/leaves.component';
+import { AvailabilityComponent } from './availability/availability.component';
+import { RequestLeaveComponent } from './request-leave/request-leave.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,7 +93,10 @@ import { ShiftOfferServiceProxy } from '@shared/service-proxies/service-proxies'
     NavbarComponent,
     ButtonComponent,
     TableComponent,
-    WeekComponent
+    WeekComponent,
+    LeavesComponent,
+    AvailabilityComponent,
+    RequestLeaveComponent
   ],
   imports: [
     CommonModule,
@@ -105,9 +111,11 @@ import { ShiftOfferServiceProxy } from '@shared/service-proxies/service-proxies'
     AppRoutingModule,
     ServiceProxyModule,
     SharedModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    AgGridModule
   ],
-  providers: [ShiftOfferServiceProxy],
+  providers: [ShiftOfferServiceProxy,
+    AvailabilityServiceProxy],
   bootstrap: [AppComponent],
   entryComponents: [
     // tenants

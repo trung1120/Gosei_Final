@@ -1,8 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, Injector, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AgGridAngular } from 'ag-grid-angular';
 import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community';
 import { Observable } from 'rxjs';
+import { AvailabilityListDto, AvailabilityServiceProxy } from '@shared/service-proxies/service-proxies';
+import { AppComponentBase } from '@shared/app-component-base';
+import { result } from 'lodash-es';
 
 
 
@@ -12,13 +15,15 @@ import { Observable } from 'rxjs';
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
-export class CalendarComponent implements OnInit {
+export class CalendarComponent extends AppComponentBase implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  avaibilitys: AvailabilityListDto[]=[];
+  constructor(private http: HttpClient, injector: Injector, private AvailabilityService: AvailabilityServiceProxy) { 
+    super(injector);
+  }
   days: any[] = [1, 2, 3, 4, 5, 6, 7];
   weekday: any[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   types: any[] = ["Annual Leave", "Sick Leave", "Parental Leave"];
-
   checkRoster = true;
   checkAvai = false;
   checkLeave = false;
@@ -53,7 +58,12 @@ export class CalendarComponent implements OnInit {
 
       this.days[i] = this.weekday[this.dateNow.getDay()] + " " + this.dateNow.getDate();
     }
-
+    this.getAvailability();
+  }
+  getAvailability(){
+    this.AvailabilityService.getAll().subscribe(result =>{
+      this.avaibilitys = result.items;
+    }) 
   }
 
 
