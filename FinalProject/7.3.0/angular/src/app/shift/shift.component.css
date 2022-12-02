@@ -1,5 +1,7 @@
 li.flex-fill {
     border: groove;
+    border-top: none;
+    margin-top: -17px;
 }
 .head-day.ps-3.py-2 {
     text-align: center;

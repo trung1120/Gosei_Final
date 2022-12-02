@@ -70,4 +70,36 @@ export class WeekComponent {
       this.dateR.setDate(this.dateR.getDate() + 1);
     }
   }
+
+  LeftButton() {
+    this.dateNow.setDate(this.dateNow.getDate() - 7);
+    this.checkWeek = this.checkWeek - 1;
+    this.ngOnInit();
+    console.log(this.dateStart + "  " + this.dateEnd);
+    if (this.checkWeek == -1) {
+      this.status = "Last Week";
+    } else if (this.checkWeek == 0) {
+      this.status = "This Week";
+    } else if (this.checkWeek < -1) {
+      this.status = this.dateStart + " - " + this.dateEnd;
+    } else if (this.checkWeek == 1) {
+      this.status = "Next Week";
+    }
+  }
+
+  RightButton() {
+    this.dateNow.setDate(this.dateNow.getDate() + 7);
+    this.checkWeek = this.checkWeek + 1;
+    this.ngOnInit();
+    console.log(this.dateStart + "  " + this.dateEnd);
+    if (this.checkWeek == 1) {
+      this.status = "Next Week";
+    } else if (this.checkWeek == 0) {
+      this.status = "This Week";
+    } else if (this.checkWeek > 1) {
+      this.status = this.dateStart + " - " + this.dateEnd;
+    } else if (this.checkWeek == -1) {
+      this.status = "Last Week";
+    }
+  }
 }
